@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Selector</title>
+</head>
+<body>
+
+    <h2>Select the language:</h2>
+    <select name="lang" id="lang" onchange="checkLanguage()">
+    </select>
+    
+    <h1 id="message"></h1>
+
+    <script>
+        var langs = ["--", "C", "C++", "Java", "JavaScript"];
+        var langE1 = document.getElementById("lang");
+
+        // Populate the dropdown with options
+        for (let l of langs) {
+            var option = document.createElement("option");
+            option.value = l;
+            option.text = l;
+            langE1.appendChild(option);
+        }
+
+        function checkLanguage() {
+            var selectedLang = langE1.value;
+            var messageEl = document.getElementById("message");
+
+            if (selectedLang === "--") {
+                messageEl.textContent = "Please select a language.";
+            } else {
+                messageEl.textContent = "You have selected: " + selectedLang;
+            }
+        }
+    </script>
+
+    <img src="off_img.jpg" alt="Image" id="image">
+    <button id="toggleButton" onclick="turnOn()">ON</button>
+
+    <script>
+        function turnOn() {
+            var image = document.getElementById("image");
+            var button = document.getElementById("toggleButton");
+
+            // Change the image source to "on" image
+            image.src = "on1.jpg";
+            
+            // Update the button text and change its action to turn off
+            button.textContent = "OFF";
+            button.onclick = turnOff;
+        }
+
+        function turnOff() {
+            var image = document.getElementById("image");
+            var button = document.getElementById("toggleButton");
+
+            // Change the image source to "off" image
+            image.src = "off_img.jpg";
+            
+            // Update the button text and change its action to turn on
+            button.textContent = "ON";
+            button.onclick = turnOn;
+        }
+    </script>
+
+</body>
+</html>
